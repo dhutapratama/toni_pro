@@ -8,6 +8,11 @@ if ($_SERVER['HTTP_HOST'] == 'pro-toni.dhutapratama.com') {
 	$db['default']['username'] = 'dhutapra_toni';
 	$db['default']['password'] = 'tonidb';
 	$db['default']['database'] = 'dhutapra_toni';
+} elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
+	$db['default']['hostname'] = 'localhost';
+	$db['default']['username'] = 'root';
+	$db['default']['password'] = '';
+	$db['default']['database'] = 'makanan';
 } else {
 	$db['default']['hostname'] = 'localhost';
 	$db['default']['username'] = 'z';
