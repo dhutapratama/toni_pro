@@ -20,14 +20,14 @@ class M_divisi extends CI_Model{
 	}
 
 	// Get all data divisi in divisi by ID
-	public function get_divisi_by_id($id = '0')
+	public function get_divisi_by_id($id = 1)
 	{
 		$database = $this->db->select('*')
 					->from('divisi')
 					->where('id', $id)
 					->get()->result();
 
-		return $database;
+		return $database[0];
 		// Result in Object
 	}
 	

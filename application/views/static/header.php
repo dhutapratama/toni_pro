@@ -52,7 +52,7 @@
            <h5 class="centered">Nama Pegawai</h5>
 
             <li class="mt">
-              <a href="admin_home.html" >
+              <a href="<?php echo site_url('admin'); ?>" >
                 <span>HOME / NOTIFIKASI</span>
               </a>
             </li>
@@ -62,25 +62,25 @@
                 <span>DATA MAKANAN</span>
               </a>
               <ul class="sub">
-                <li><a href="admin_makanan_pokok.html">MAKANAN POKOK</a></li>
-                <li><a href="admin_lauk_pauk.html">LAUK PAUK</a></li>
-                <li><a href="admin_sayur.html">SAYUR</a></li>
-                <li><a href="admin_buah.html">BUAH</a></li>
-                <li><a href="admin_minuman.html">MINUMAN</a></li>
+                <li><a href="<?php echo site_url('admin/makanan/pokok'); ?>">MAKANAN POKOK</a></li>
+                <li><a href="<?php echo site_url('admin/makanan/lauk_pauk'); ?>">LAUK PAUK</a></li>
+                <li><a href="<?php echo site_url('admin/makanan/sayur'); ?>">SAYUR</a></li>
+                <li><a href="<?php echo site_url('admin/makanan/buah'); ?>">BUAH</a></li>
+                <li><a href="<?php echo site_url('admin/makanan/minuman'); ?>">MINUMAN</a></li>
               </ul>
             </li>
             <li class="sub-menu">
-              <a href="admin_menu_pegawai.html" >
+              <a href="<?php echo site_url('admin/menu'); ?>" >
                 <span>MENU PEGAWAI</span>
               </a>
             </li>
             <li class="sub-menu">
-              <a href="admin_data_pegawai.html" >
+              <a href="<?php echo site_url('admin/pegawai'); ?>" >
                 <span>DATA PEGAWAI</span>
               </a>
             </li>
             <li class="sub-menu">
-              <a href="admin_data_admin.html" >
+              <a href="<?php echo site_url('admin/administrator'); ?>" >
                 <span>DATA ADMIN / KANTIN</span>
               </a>
             </li>

@@ -3,10 +3,18 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'z';
-$db['default']['password'] = 'z';
-$db['default']['database'] = 'zadmin_toni';
+if ($_SERVER['HTTP_HOST'] == 'pro-toni.dhutapratama.com') {
+	$db['default']['hostname'] = 'localhost';
+	$db['default']['username'] = 'dhutapra_toni';
+	$db['default']['password'] = 'tonidb';
+	$db['default']['database'] = 'dhutapra_toni';
+} else {
+	$db['default']['hostname'] = 'localhost';
+	$db['default']['username'] = 'z';
+	$db['default']['password'] = 'z';
+	$db['default']['database'] = 'zadmin_toni';
+}
+
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
