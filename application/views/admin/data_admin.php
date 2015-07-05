@@ -26,8 +26,8 @@
                                 <td><?php echo $value->email; ?></td>
                                 <td><?php echo $value->type; ?></td>
                                 <td>
-                                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                    <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                    <a href="<?php echo site_url('admin/administrator/edit/'.$value->id);?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
+                                    <a href="<?php echo site_url('admin/administrator/delete/'.$value->id);?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
                                 </td>
                             </tr>
                           <?php } ?>

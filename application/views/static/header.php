@@ -75,6 +75,11 @@
               </a>
             </li>
             <li class="sub-menu">
+              <a href="<?php echo site_url('admin/divisi'); ?>" >
+                <span>DATA DIVISI</span>
+              </a>
+            </li>
+            <li class="sub-menu">
               <a href="<?php echo site_url('admin/pegawai'); ?>" >
                 <span>DATA PEGAWAI</span>
               </a>

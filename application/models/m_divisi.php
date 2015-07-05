@@ -7,7 +7,6 @@ class M_divisi extends CI_Model{
 		parent::__construct();
 	}
 
-
 	// Get all data in divisi
 	public function get_divisis()
 	{
@@ -20,7 +19,7 @@ class M_divisi extends CI_Model{
 	}
 
 	// Get all data divisi in divisi by ID
-	public function get_divisi_by_id($id = 1)
+	public function get_divisi_by_id($id = 0)
 	{
 		$database = $this->db->select('*')
 					->from('divisi')

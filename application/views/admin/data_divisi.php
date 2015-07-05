@@ -22,8 +22,8 @@
                                 <td><?php echo $value->id; ?></td>
                                 <td><?php echo $value->nama_divisi; ?></td>
                                 <td>
-                                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                                    <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                                    <a href="<?php echo site_url('admin/divisi/edit/'.$value->id);?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
+                                    <a href="<?php echo site_url('admin/divisi/delete/'.$value->id);?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
                                 </td>
                             </tr>
                           <?php } ?>
@@ -37,7 +37,7 @@
                                     <h4 class="modal-title">TAMBAH DIVISI</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal style-form" method="post" action="<?php echo site_url('admin/divisi/insert');?>">
+                                    <form class="form-horizontal style-form" method="post" action="<?php echo site_url('admin/divisi/insert'); ?>">
                                         <div class="form-group">
                                             <label class="col-sm-3 col-sm-3 control-label">NAMA DIVISI</label>
                                             <div class="col-sm-9">

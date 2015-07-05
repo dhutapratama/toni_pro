@@ -24,8 +24,8 @@
                 <td><?php echo $value->nama; ?></td>
                 <td><?php echo $this->m_divisi->get_divisi_by_id($value->id_divisi)->nama_divisi; ?></td>
                 <td>
-                  <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                  <button class="btn btn-danger btn-xs fa fa-trash-o"></button>
+                  <a href="<?php echo site_url('admin/divisi/edit/'.$value->id); ?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
+                  <a href="<?php echo site_url('admin/divisi/delete/'.$value->id); ?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
                 </td>
               </tr>
               <?php } ?>

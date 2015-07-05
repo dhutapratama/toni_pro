@@ -1,7 +1,7 @@
       <!--main content start-->
       <section id="main-content">
         <section class="wrapper site-min-height">
-         <h3><i class="fa fa-angle-right"></i> MENU MAKANAN</h3>
+         <h3><i class="fa fa-angle-right"></i> MENU MAKANAN : <?php echo $get_pegawai->nama; ?></h3>
          <p>Menu makanan di tentukan oleh kebutuhan kalori harian anda.</p>
 
          <div class="row mt">

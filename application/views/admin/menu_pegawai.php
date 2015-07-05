@@ -4,7 +4,7 @@
        <div class="row mt">
         <div class="col-lg-12">
           <div class="content-panel">
-            <h4><i class="fa fa-angle-right"></i> SEMUA PEGAWAI </h4>
+            <h4><i class="fa fa-angle-right"></i> MENU MAKANAN SEMUA PEGAWAI </h4>
             <hr>
             <table class="table">
               <thead>
@@ -17,34 +17,18 @@
                 </tr>
               </thead>
               <tbody>
+                <?php
+                    foreach ($get_pegawais as $key => $value) { ?>
                 <tr>
-                  <td>000001</td>
-                  <td>User Satu</td>
-                  <td>IT</td>
-                  <td>5</td>
+                  <td><?php echo $value->nomor_induk; ?></td>
+                  <td><?php echo $value->nama; ?></td>
+                  <td><?php echo $this->m_divisi->get_divisi_by_id($value->id_divisi)->nama_divisi; ?></td>
+                  <td><?php echo $this->m_menu_makanan->count_menu_makanan_by_id_pegawai($value->id); ?></td>
                   <td>
-                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
+                    <a href="<?php echo site_url('admin/menu/edit/'.$value->id);?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
                   </td>
                 </tr>
-                <tr>
-                  <td>000002</td>
-                  <td>User Dua</td>
-                  <td>HRD</td>
-                  <td>3</td>
-                  <td>
-                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>000003</td>
-                  <td>User Tiga</td>
-                  <td>HEAD OPERATIONAL</td>
-                  <td>4</td>
-                  <td>
-                    <button class="btn btn-primary btn-xs fa fa-pencil"></button>
-                  </td>
-                </tr>
-
+                <?php } ?>
               </tbody>
             </table>
           </div>
