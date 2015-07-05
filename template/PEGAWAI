@@ -1,0 +1,17 @@
+PEGAWAI
+random username / password (login)
+Form - username, password, email untuk hapus generate
+Form - kebutuhan kalori
+lihat menu makanan
+
+ADMIN
+- Data Makanan
+-- makanan_pokok
+-- makanan_lauk_pauk
+-- makanan_sayur
+-- makanan_buah
+-- minuman
+form notifikasi
+form menu
+form pegawai
+form administrasi
