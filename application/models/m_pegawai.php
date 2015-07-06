@@ -44,7 +44,10 @@ class M_pegawai extends CI_Model{
 		// $data['password']
 		// $data['email']
 
-		$data['password'] = md5($data['password']);
+		if (isset($data['password'])) {
+			$data['password'] = md5($data['password']);
+		}
+		
 		$database = $this->db->insert('pegawai', $data);
 		return $database;
 	}

@@ -26,5 +26,5 @@
 
     <!--script for this page-->
 
-  </body>
+  </Body>
   </html>

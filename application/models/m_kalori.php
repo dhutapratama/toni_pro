@@ -65,4 +65,17 @@ class M_kalori extends CI_Model{
 		return $database;
 	}
 
+	// Additional
+	// Get all data kalori in kalori by ID User
+	public function get_kalori_by_id_user($id_user = 0)
+	{
+		$database = $this->db->select('*')
+					->from('kebutuhan_kalori')
+					->where('id_user', $id_user)
+					->get()->result();
+
+		return $database;
+		// Result in Object
+	}
+
 }

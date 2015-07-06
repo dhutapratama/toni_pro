@@ -8,7 +8,7 @@ class Render extends CI_Model{
 	}
 
 	public function view($name = 'error', $data = array()) {
-		$this->load->view('static/header', $data);
+		$this->load->view('static/header_'.$this->uri->segment(1), $data);
 		$this->load->view($name);
 		$this->load->view('static/footer');
 	}

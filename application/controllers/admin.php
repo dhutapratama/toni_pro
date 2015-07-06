@@ -45,12 +45,12 @@ class Admin extends CI_Controller {
 		
 		$this->m_makanan_pokok->insert_makanan_pokok($data);
 
-		redirect('admin/makanan/pokok');
+		redirect('admin/makanan/pokok/'.md5(time()));
 	}
 
 	private function _delete_makanan_pokok($id) {
 		$this->m_makanan_pokok->delete_makanan_pokok($id);
-		redirect('admin/makanan/pokok');
+		redirect('admin/makanan/pokok/'.md5(time()));
 	}
 	// End of makanan/pokok function
 
@@ -77,13 +77,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_makanan_lauk_pauk->insert_makanan_lauk_pauk($data);
 
-		redirect('admin/makanan/lauk_pauk');
+		redirect('admin/makanan/lauk_pauk/'.md5(time()));
 	}
 
 	private function _delete_makanan_lauk_pauk($id) {
 		$this->m_makanan_lauk_pauk->delete_makanan_lauk_pauk($id);
 
-		redirect('admin/makanan/lauk_pauk');
+		redirect('admin/makanan/lauk_pauk/'.md5(time()));
 	}
 	// End of makanan/lauk_pauk function
 
@@ -110,13 +110,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_makanan_sayur->insert_makanan_sayur($data);
 
-		redirect('admin/makanan/sayur');
+		redirect('admin/makanan/sayur/'.md5(time()));
 	}
 
 	private function _delete_makanan_sayur($id) {
 		$this->m_makanan_sayur->delete_makanan_sayur($id);
 
-		redirect('admin/makanan/sayur');
+		redirect('admin/makanan/sayur/'.md5(time()));
 	}
 	// End of makanan/sayur function
 
@@ -143,13 +143,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_makanan_buah->insert_makanan_buah($data);
 
-		redirect('admin/makanan/buah');
+		redirect('admin/makanan/buah/'.md5(time()));
 	}
 
 	private function _delete_makanan_buah($id) {
 		$this->m_makanan_buah->delete_makanan_buah($id);
 
-		redirect('admin/makanan/buah');
+		redirect('admin/makanan/buah/'.md5(time()));
 	}
 	// End of makanan/buah function
 
@@ -176,13 +176,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_makanan_minuman->insert_makanan_minuman($data);
 
-		redirect('admin/makanan/minuman');
+		redirect('admin/makanan/minuman/'.md5(time()));
 	}
 
 	private function _delete_makanan_minuman($id) {
 		$this->m_makanan_minuman->delete_makanan_minuman($id);
 
-		redirect('admin/makanan/minuman');
+		redirect('admin/makanan/minuman/'.md5(time()));
 	}
 	// End of minuman function
 
@@ -214,13 +214,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_pegawai->insert_pegawai($data);
 
-		redirect('admin/pegawai');
+		redirect('admin/pegawai/'.md5(time()));
 	}
 
 	private function _delete_pegawai($id) {
 		$this->m_pegawai->delete_pegawai($id);
 
-		redirect('admin/pegawai');
+		redirect('admin/pegawai/'.md5(time()));
 	}
 	// End of pegawai function
 
@@ -268,13 +268,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_administrator->insert_administrator($data);
 
-		redirect('admin/administrator');
+		redirect('admin/administrator/'.md5(time()));
 	}
 
 	private function _delete_administrator($id) {
 		$this->m_administrator->delete_administrator($id);
 
-		redirect('admin/administrator');
+		redirect('admin/administrator/'.md5(time()));
 	}
 	// End of administrator function
 
@@ -302,13 +302,13 @@ class Admin extends CI_Controller {
 		
 		$this->m_divisi->insert_divisi($data);
 
-		redirect('admin/divisi');
+		redirect('admin/divisi/'.md5(time()));
 	}
 
 	private function _delete_divisi($id) {
 		$this->m_divisi->delete_divisi($id);
 
-		redirect('admin/divisi');
+		redirect('admin/divisi/'.md5(time()));
 	}
 	// End of divisi function
 }
