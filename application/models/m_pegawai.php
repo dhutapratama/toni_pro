@@ -90,4 +90,21 @@ class M_pegawai extends CI_Model{
 		return $database;
 	}
 
+	// Additional
+	public function login($username, $password) {
+		$database = $this->db->select('*')
+					->from('pegawai')
+					->where('username', $username)
+					->where('password', md5($password))
+					->get()->num_rows();
+
+		if ($database > 0) {
+
+			$data['username'] 	= $username;
+			$data['role'] 		= 'pegawai';
+
+			$this->session->set_userdata($data);
+		}
+	}
+
 }

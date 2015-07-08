@@ -9,6 +9,16 @@ class Home extends CI_Controller {
 	
 	public function index()
 	{
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$data['username'] = $this->input->post('username');
+			$data['password'] = $this->input->post('password');
+			
+			$this->m_administrator->login($data['username'], $data['password']);
+			$this->m_pegawai->login($data['username'], $data['password']);
+
+			redirect('');
+		}
 		$this->load->view('login');
+		
 	}
 }

@@ -30,12 +30,12 @@
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" action="index.html">
+		      <form class="form-login" action="<?php echo base_url(); ?>" method="post">
 		        <h2 class="form-login-heading">PORTAL</h2>
 		        <div class="login-wrap">
-		            <input type="text" class="form-control" placeholder="User ID" autofocus>
+		            <input type="text" class="form-control" placeholder="User ID" autofocus name="username">
 		            <br>
-		            <input type="password" class="form-control" placeholder="Password">
+		            <input type="password" class="form-control" placeholder="Password" name="password">
 		            <label class="checkbox">
 		            	<span class="pull-left">
 		                    <a data-toggle="modal" href="login.html#kodePendaftaran"> KODE PENDAFTARAN</a>

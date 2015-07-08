@@ -77,4 +77,26 @@ class M_administrator extends CI_Model{
 		return $database;
 	}
 
+	// Additional
+	public function login($username, $password) {
+		$database = $this->db->select('*')
+					->from('administrator')
+					->where('username', $username)
+					->where('password', md5($password))
+					->get()->num_rows();
+
+		if ($database > 0) {
+			$database = $this->db->select('*')
+					->from('administrator')
+					->where('username', $username)
+					->where('password', md5($password))
+					->get()->result();
+
+			$data['username'] 	= $username;
+			$data['role'] 		= $database[0]->type;
+
+			$this->session->set_userdata($data);
+		}
+	}
+
 }
