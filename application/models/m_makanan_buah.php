@@ -27,7 +27,7 @@ class M_makanan_buah extends CI_Model{
 					->where('id', $id)
 					->get()->result();
 
-		return $database;
+		return $database[0];
 		// Result in Object
 	}
 	

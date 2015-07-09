@@ -19,20 +19,26 @@ class Pegawai extends CI_Controller {
 	{
 		switch ($selector) {
 			case 'update':
-				$this->_insert_profil();
+				$this->_update_profil();
 				break;
 
 			default:
-				$data['get_pegawai'] = $this->m_pegawai->get_pegawai_by_id("5");
+				$data['get_pegawai'] = $this->m_pegawai->get_pegawai_by_username();
 				$this->render->view('pegawai/profil', $data);
 				break;
 		}
 	}
 
 	private function _update_profil() {
-		$data['nama_profil'] = $this->input->post('nama_profil');
+		$id 				  = $this->input->post('id');
+		$data['berat_badan']  = $this->input->post('berat_badan');
+		$data['tinggi_badan'] = $this->input->post('tinggi_badan');
+		$data['umur']		  = $this->input->post('umur');
+		$data['username']	  = $this->input->post('username');
+		$data['password']	  = $this->input->post('password');
+		$data['email']		  = $this->input->post('email');
 		
-		$this->m_pegawai->update_pegawai($data);
+		$this->m_pegawai->update_pegawai($id, $data);
 
 		redirect('pegawai/profil/'.md5(time()));
 	}

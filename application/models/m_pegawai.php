@@ -66,13 +66,15 @@ class M_pegawai extends CI_Model{
 		// $data['password']
 		// $data['email']
 
-		if (isset($data['password'])) {
+		if (!empty($data['password'])) {
 			$data['password'] = md5($data['password']);
+		} else {
+			unset($data['password']);
 		}
 
 		if ($id != 0) {
-			$database = $this->db->where("id", $id)
-						->update("pegawai", $data);
+			$this->db->where("id", $id);
+			$database = $this->db->update("pegawai", $data);
 		} else {
 			$database = false;
 		}
@@ -105,6 +107,19 @@ class M_pegawai extends CI_Model{
 
 			$this->session->set_userdata($data);
 		}
+	}
+
+	// Get all data pegawai in pegawai by username
+	public function get_pegawai_by_username()
+	{
+		$username = $this->session->userdata('username');
+		$database = $this->db->select("*")
+					->from("pegawai")
+					->where('username', $username)
+					->get()->result();
+
+		return $database[0];
+		// Result in Object
 	}
 
 }

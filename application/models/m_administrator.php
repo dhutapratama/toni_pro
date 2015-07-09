@@ -26,7 +26,7 @@ class M_administrator extends CI_Model{
 					->where('id', $id)
 					->get()->result();
 
-		return $database;
+		return $database[0];
 		// Result in Object
 	}
 	
@@ -53,8 +53,10 @@ class M_administrator extends CI_Model{
 		// $data['email']
 		// $data['type'] = 'admin' / 'kantin' <- choose one
 
-		if (isset($data['password'])) {
+		if (!empty($data['password'])) {
 			$data['password'] = md5($data['password']);
+		} else {
+			unset($data['password']);
 		}
 
 		if ($id != 0) {
@@ -97,6 +99,18 @@ class M_administrator extends CI_Model{
 
 			$this->session->set_userdata($data);
 		}
+	}
+
+	public function get_administrator_by_username()
+	{
+		$username = $this->session->userdata('username');
+		$database = $this->db->select('*')
+					->from('administrator')
+					->where('username', $username)
+					->get()->result();
+
+		return $database[0];
+		// Result in Object
 	}
 
 }

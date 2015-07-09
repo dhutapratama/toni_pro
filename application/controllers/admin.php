@@ -29,8 +29,13 @@ class Admin extends CI_Controller {
 				$this->_insert_makanan_pokok();
 				break;
 
+			case 'edit':
+				$data['get_makanan_pokok'] = $this->m_makanan_pokok->get_makanan_pokok_by_id($id);
+				$this->render->view('admin/makanan_pokok_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_makanan_pokok($id);
+				$this->_update_makanan_pokok();
 				break;
 			
 			case 'delete':
@@ -46,9 +51,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_pokok() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
-		
 		$this->m_makanan_pokok->insert_makanan_pokok($data);
-
 		redirect('admin/makanan/pokok/'.md5(time()));
 	}
 
@@ -57,11 +60,13 @@ class Admin extends CI_Controller {
 		redirect('admin/makanan/pokok/'.md5(time()));
 	}
 
-	private function _update_makanan_pokok($id) {
-		$data['nama_makanan'] = $this->input->post('nama_makanan');
-		
-		$this->m_makanan_pokok->update_makanan_pokok($id, $data);
+	private function _update_makanan_pokok() {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$id 				  = $this->input->post('id');
+			$data['nama_makanan'] = $this->input->post('nama_makanan');
 
+			$this->m_makanan_pokok->update_makanan_pokok($id, $data);
+		}
 		redirect('admin/makanan/pokok/'.md5(time()));
 	}
 	// End of makanan/pokok function
@@ -71,6 +76,15 @@ class Admin extends CI_Controller {
 		switch ($selector) {
 			case 'insert':
 				$this->_insert_makanan_lauk_pauk();
+				break;
+
+			case 'edit':
+				$data['get_makanan_lauk_pauk'] = $this->m_makanan_lauk_pauk->get_makanan_lauk_pauk_by_id($id);
+				$this->render->view('admin/makanan_lauk_pauk_edit', $data);
+				break;
+
+			case 'update':
+				$this->_update_makanan_lauk_pauk();
 				break;
 			
 			case 'delete':
@@ -98,7 +112,8 @@ class Admin extends CI_Controller {
 		redirect('admin/makanan/lauk_pauk/'.md5(time()));
 	}
 
-	private function _update_makanan_lauk_pauk($id) {
+	private function _update_makanan_lauk_pauk() {
+		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
 		
 		$this->m_makanan_lauk_pauk->update_makanan_lauk_pauk($id, $data);
@@ -114,8 +129,13 @@ class Admin extends CI_Controller {
 				$this->_insert_makanan_sayur();
 				break;
 
+			case 'edit':
+				$data['get_makanan_sayur'] = $this->m_makanan_sayur->get_makanan_sayur_by_id($id);
+				$this->render->view('admin/makanan_sayur_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_makanan_sayur($id);
+				$this->_update_makanan_sayur();
 				break;
 			
 			case 'delete':
@@ -131,23 +151,19 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_sayur() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
-		
 		$this->m_makanan_sayur->insert_makanan_sayur($data);
-
 		redirect('admin/makanan/sayur/'.md5(time()));
 	}
 
 	private function _delete_makanan_sayur($id) {
 		$this->m_makanan_sayur->delete_makanan_sayur($id);
-
 		redirect('admin/makanan/sayur/'.md5(time()));
 	}
 
-	private function _update_makanan_sayur($id) {
+	private function _update_makanan_sayur() {
+		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
-		
 		$this->m_makanan_sayur->update_makanan_sayur($id, $data);
-
 		redirect('admin/makanan/sayur/'.md5(time()));
 	}
 	// End of makanan/sayur function
@@ -159,8 +175,13 @@ class Admin extends CI_Controller {
 				$this->_insert_makanan_buah();
 				break;
 
+			case 'edit':
+				$data['get_makanan_buah'] = $this->m_makanan_buah->get_makanan_buah_by_id($id);
+				$this->render->view('admin/makanan_buah_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_makanan_buah($id);
+				$this->_update_makanan_buah();
 				break;
 			
 			case 'delete':
@@ -188,7 +209,8 @@ class Admin extends CI_Controller {
 		redirect('admin/makanan/buah/'.md5(time()));
 	}
 
-	private function _update_makanan_buah($id) {
+	private function _update_makanan_buah() {
+		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
 		
 		$this->m_makanan_buah->update_makanan_buah($id, $data);
@@ -202,6 +224,11 @@ class Admin extends CI_Controller {
 		switch ($selector) {
 			case 'insert':
 				$this->_insert_makanan_minuman();
+				break;
+
+			case 'edit':
+				$data['get_makanan_minuman'] = $this->m_makanan_minuman->get_makanan_minuman_by_id($id);
+				$this->render->view('admin/makanan_minuman_edit', $data);
 				break;
 
 			case 'update':
@@ -233,7 +260,8 @@ class Admin extends CI_Controller {
 		redirect('admin/makanan/minuman/'.md5(time()));
 	}
 
-	private function _update_makanan_minuman($id) {
+	private function _update_makanan_minuman() {
+		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
 		
 		$this->m_makanan_minuman->update_makanan_minuman($id, $data);
@@ -250,8 +278,14 @@ class Admin extends CI_Controller {
 				$this->_insert_pegawai();
 				break;
 
+			case 'edit':
+				$data['get_divisis'] = $this->m_divisi->get_divisis();
+				$data['get_pegawai'] = $this->m_pegawai->get_pegawai_by_id($id);
+				$this->render->view('admin/data_pegawai_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_pegawai($id);
+				$this->_update_pegawai();
 				break;
 			
 			case 'delete':
@@ -283,7 +317,8 @@ class Admin extends CI_Controller {
 		redirect('admin/pegawai/'.md5(time()));
 	}
 
-	private function _update_pegawai($id) {
+	private function _update_pegawai() {
+		$id 				   = $this->input->post('id');
 		$data['nomor_induk']   = $this->input->post('nomor_induk');
 		$data['nama']          = $this->input->post('nama');
 		$data['jenis_kelamin'] = $this->input->post('jenis_kelamin');
@@ -319,8 +354,13 @@ class Admin extends CI_Controller {
 				$this->_insert_administrator();
 				break;
 
+			case 'edit':
+				$data['get_administrator'] = $this->m_administrator->get_administrator_by_id($id);
+				$this->render->view('admin/data_admin_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_administrator($id);
+				$this->_update_administrator();
 				break;
 			
 			case 'delete':
@@ -353,6 +393,7 @@ class Admin extends CI_Controller {
 	}
 
 	private function _update_administrator($id) {
+		$id 			  = $this->input->post('id');
 		$data['username'] = $this->input->post('username');
 		$data['password'] = $this->input->post('password');
 		$data['nama']     = $this->input->post('nama');
@@ -373,8 +414,13 @@ class Admin extends CI_Controller {
 				$this->_insert_divisi();
 				break;
 
+			case 'edit':
+				$data['get_divisi'] = $this->m_divisi->get_divisi_by_id($id);
+				$this->render->view('admin/data_divisi_edit', $data);
+				break;
+
 			case 'update':
-				$this->_update_divisi($id);
+				$this->_update_divisi();
 				break;
 			
 			case 'delete':
@@ -402,7 +448,8 @@ class Admin extends CI_Controller {
 		redirect('admin/divisi/'.md5(time()));
 	}
 
-	private function _update_divisi($id) {
+	private function _update_divisi() {
+		$id 				 = $this->input->post('id');
 		$data['nama_divisi'] = $this->input->post('nama_divisi');
 		
 		$this->m_divisi->update_divisi($id, $data);

@@ -15,7 +15,10 @@ class Render extends CI_Model{
 		}
 
 		if(!empty($username)) {
-			if ($this->uri->segment(1) == '') {
+
+			if($this->uri->segment(1) == 'logout') {
+				$this->session->sess_destroy();
+			} elseif($this->uri->segment(1) != $role) {
 				switch ($role) {
 					case 'admin':
 						redirect('admin');
@@ -29,12 +32,12 @@ class Render extends CI_Model{
 						redirect('kantin');
 						break;
 
-					default:
+					default: 
 						$this->session->sess_destroy();
 						break;
+
 				}
 			}
-			
 		} else {
 			if ($this->uri->segment(1) != '') {
 					redirect();

@@ -38,7 +38,7 @@
           <!--logo end-->
           <div class="top-menu">
            <ul class="nav pull-right top-menu">
-            <li><a class="logout" href="login.html">Logout</a></li>
+            <li><a class="logout" href="<?php echo site_url('logout'); ?>">Logout</a></li>
           </ul>
         </div>
       </header>
