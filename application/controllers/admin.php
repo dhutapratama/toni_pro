@@ -340,11 +340,23 @@ class Admin extends CI_Controller {
 	}
 	// End of pegawai function
 
+	// Start of menu function
 	public function menu($selector = '', $id = '')
 	{
 		switch ($selector) {
+			case 'insert':
+				$this->_insert_makanan($id);
+				break;
+
 			case 'edit':
-				$data['get_pegawai'] = $this->m_pegawai->get_pegawai_by_id($id);
+				$data['get_pegawai']			= $this->m_pegawai->get_pegawai_by_id($id);
+				$data['get_makanan_pokok']		= $this->m_makanan_pokok->get_makanan_pokoks();
+				$data['get_makanan_lauk_pauk']	= $this->m_makanan_lauk_pauk->get_makanan_lauk_pauks();
+				$data['get_makanan_sayur']	 	= $this->m_makanan_sayur->get_makanan_sayurs();
+				$data['get_makanan_buah']	 	= $this->m_makanan_buah->get_makanan_buahs();
+				$data['get_makanan_minuman'] 	= $this->m_makanan_minuman->get_makanan_minumans();
+				$data['get_menu']				= $this->m_menu_makanan->get_menu_makanan_by_id_pegawai($id);
+
 				$this->render->view('admin/menu_pegawai_add', $data);
 				break;
 			
@@ -353,8 +365,21 @@ class Admin extends CI_Controller {
 				$this->render->view('admin/menu_pegawai', $data);
 				break;
 		}
-		
 	}
+
+	private function _insert_makanan($id) {
+		$data['id_user'] 			  = $id;
+		$data['id_makanan_pokok'] 	  = $_POST['makanan_pokok'];
+		$data['id_makanan_lauk_pauk'] = $_POST['makanan_lauk_pauk'];
+		$data['id_makanan_sayur'] 	  = $_POST['makanan_sayur'];
+		$data['id_makanan_buah'] 	  = $_POST['makanan_buah'];
+		$data['id_minuman'] 		  = $_POST['makanan_minuman'];
+		
+		$this->m_menu_makanan->insert_menu_makanan($data);
+
+		redirect('admin/menu/edit/'.$id.'/'.md5(time()));
+	}
+	// End of menu function
 
 	// Start of administrator function
 	public function administrator($selector = '', $id = '')
