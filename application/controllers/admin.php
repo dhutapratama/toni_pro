@@ -377,11 +377,11 @@ class Admin extends CI_Controller {
 
 	private function _insert_menu($id) {
 		$data['id_user'] 			  = $id;
-		$data['id_makanan_pokok'] 	  = $_POST['makanan_pokok'];
-		$data['id_makanan_lauk_pauk'] = $_POST['makanan_lauk_pauk'];
-		$data['id_makanan_sayur'] 	  = $_POST['makanan_sayur'];
-		$data['id_makanan_buah'] 	  = $_POST['makanan_buah'];
-		$data['id_minuman'] 		  = $_POST['makanan_minuman'];
+		$data['id_makanan_pokok'] 	  = $this->input->post('makanan_pokok');
+		$data['id_makanan_lauk_pauk'] = $this->input->post('makanan_lauk_pauk');
+		$data['id_makanan_sayur'] 	  = $this->input->post('makanan_sayur');
+		$data['id_makanan_buah'] 	  = $this->input->post('makanan_buah');
+		$data['id_minuman']		  	  = $this->input->post('makanan_minuman');
 		
 		$this->m_menu_makanan->insert_menu_makanan($data);
 

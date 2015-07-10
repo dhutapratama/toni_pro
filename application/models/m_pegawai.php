@@ -24,9 +24,14 @@ class M_pegawai extends CI_Model{
 		$database = $this->db->select("*")
 					->from("pegawai")
 					->where('id', $id)
-					->get()->result();
+					->get();
 
-		return $database[0];
+		if ($database->num_rows() > 0) {
+			$database = $database->result();
+			return $database[0];
+		} else {
+			$database = array();
+		}
 		// Result in Object
 	}
 	
