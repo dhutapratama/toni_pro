@@ -96,7 +96,7 @@ class M_menu_makanan extends CI_Model{
 		$database = $this->db->select('*')
 					->from('menu_makanan')
 					->where('id_user', $id_pegawai)
-					->count_all();
+					->get()->num_rows();
 
 		return $database;
 		// Result in Object

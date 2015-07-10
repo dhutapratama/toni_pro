@@ -53,14 +53,14 @@ class Pegawai extends CI_Controller {
 				break;
 
 			default:
-				$data['get_kalori'] = $this->m_kalori->get_kalori_by_id_user();
+				$data['get_kalori'] = $this->m_kalori->get_kalori_by_username();
 				$this->render->view('pegawai/kalori', $data);
 				break;
 		}
 	}
 
 	private function _update_kalori() {
-		$data['nama_profil'] = $this->input->post('nama_profil');
+		$data['kalori'] = $this->input->post('kalori');
 		
 		$this->m_kalori->update_kalori($data);
 

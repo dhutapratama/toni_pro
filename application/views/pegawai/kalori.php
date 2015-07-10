@@ -8,7 +8,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 mb">
               <div class="weather-3 pn centered">
                 <i class="fa fa-sun-o"></i>
-                <h1>15000 KALORI</h1>
+                <h1><?php echo $get_kalori->kalori; ?> KALORI</h1>
                 <div class="row">
                   <h3 class="centered"><a data-toggle="modal" href="pegawai_profil.html#ubahData" class="btn btn-theme03"> UBAH</a></h3>
 
@@ -29,21 +29,19 @@
             </div>
 
             <div class="modal-body">
-              <form class="form-horizontal style-form" method="get">
+              <form class="form-horizontal style-form" method="post" action="<?php echo site_url('pegawai/kalori/update');?>">
 
                 <div class="form-group">
                   <label class="col-sm-3 col-sm-3 control-label">KALORI ANDA</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" name="kalori" value="<?php echo $get_kalori->kalori; ?>">
                   </div>
                 </div>
-
+                <div class="modal-footer">
+                  <button data-dismiss="modal" class="btn btn-default" type="button">Batal</button>
+                  <button class="btn btn-theme" type="submit">Simpan</button>
+                </div>
               </form>
-            </div>
-
-            <div class="modal-footer">
-              <button data-dismiss="modal" class="btn btn-default" type="button">Batal</button>
-              <button class="btn btn-theme" type="button">Simpan</button>
             </div>
           </div>
         </div>

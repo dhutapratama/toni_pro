@@ -8,9 +8,19 @@ class Admin extends CI_Controller {
 	}
 	
 	// Start of index function
-	public function index()
+	public function index($selector = '', $id = 0)
 	{
-		$this->render->view('admin/home');
+		switch ($selector) {
+			case 'delete':
+				$this->m_notifikasi->delete_notifikasi($id);
+				redirect();
+				break;
+			
+			default:
+				$data['get_notifikasis'] = $this->m_notifikasi->get_notifikasis();
+				$this->render->view('admin/home', $data);
+				break;
+		}
 	}
 	// End of index function
 

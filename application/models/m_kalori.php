@@ -41,16 +41,40 @@ class M_kalori extends CI_Model{
 	}
 
 	// Updating all kalori data By ID
-	public function update_kalori($id = 0, $data = array())
+	public function update_kalori($data = array())
 	{
 		// $data['id_user']
 		// $data['kalori']
-		if ($id != 0) {
-			$database = $this->db->where('id', $id)
-						->update('kebutuhan_kalori', $data);
+
+		$username = $this->session->userdata('username');
+
+		$pegawai = $this->db->select('*')
+					->from('pegawai')
+					->where('username', $username)
+					->get()->result();
+
+		$database = $this->db->select('*')
+					->from('kebutuhan_kalori')
+					->where('id_user', $pegawai[0]->id)
+					->get();
+
+		$data['id_user'] = $pegawai[0]->id;;
+
+		if ($database->num_rows() > 0) {
+			$kalori_awal = $database->result();
+			$kalori_awal = $kalori_awal[0]->kalori;
+			$database    = $this->db->where('id_user', $data['id_user'])
+							->update('kebutuhan_kalori', $data);
 		} else {
-			$database = false;
+			$kalori_awal 	 = 0;
+			
+			$database 		 = $this->insert_kalori($data);
 		}
+
+		$data['notifikasi'] = " mengubah kalorinya dari " . $kalori_awal . " menjadi " . $data['kalori'];
+		unset($data['kalori']);
+
+		$this->m_notifikasi->insert_notifikasi($data);
 
 		return $database;
 	}
@@ -67,14 +91,30 @@ class M_kalori extends CI_Model{
 
 	// Additional
 	// Get all data kalori in kalori by ID User
-	public function get_kalori_by_id_user($id_user = 0)
+	public function get_kalori_by_username()
 	{
-		$database = $this->db->select('*')
-					->from('kebutuhan_kalori')
-					->where('id_user', $id_user)
+		$username = $this->session->userdata('username');
+
+		$pegawai = $this->db->select('*')
+					->from('pegawai')
+					->where('username', $username)
 					->get()->result();
 
-		return $database;
+		$database = $this->db->select('*')
+					->from('kebutuhan_kalori')
+					->where('id_user', $pegawai[0]->id)
+					->get();
+
+		if ($database->num_rows() > 0) {
+			$database = $database->result();
+			return $database[0];
+		} else {
+
+			unset($database);
+			$database[0]->kalori = 0;
+			return $database[0];
+		}
+		
 		// Result in Object
 	}
 

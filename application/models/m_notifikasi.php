@@ -67,4 +67,7 @@ class M_notifikasi extends CI_Model{
 		return $database;
 	}
 
+	// Additional
+	
+
 }
