@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50529
 File Encoding         : 65001
 
-Date: 2015-07-08 06:30:57
+Date: 2015-07-11 00:30:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -27,7 +27,21 @@ CREATE TABLE `administrator` (
   `email` varchar(255) DEFAULT NULL,
   `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for ci_sessions
+-- ----------------------------
+DROP TABLE IF EXISTS `ci_sessions`;
+CREATE TABLE `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for divisi
@@ -48,7 +62,7 @@ CREATE TABLE `kebutuhan_kalori` (
   `id_user` int(11) DEFAULT NULL,
   `kalori` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for makanan_buah
@@ -58,7 +72,7 @@ CREATE TABLE `makanan_buah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_makanan` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for makanan_lauk_pauk
@@ -68,7 +82,7 @@ CREATE TABLE `makanan_lauk_pauk` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_makanan` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for makanan_minuman
@@ -78,7 +92,7 @@ CREATE TABLE `makanan_minuman` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_makanan` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for makanan_pokok
@@ -88,7 +102,7 @@ CREATE TABLE `makanan_pokok` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_makanan` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for makanan_sayur
@@ -98,7 +112,7 @@ CREATE TABLE `makanan_sayur` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_makanan` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for menu_makanan
@@ -107,13 +121,13 @@ DROP TABLE IF EXISTS `menu_makanan`;
 CREATE TABLE `menu_makanan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) DEFAULT NULL,
-  `id_makanan_pokok` int(11) DEFAULT NULL,
-  `id_makanan_lauk_pauk` int(11) DEFAULT NULL,
-  `id_makanan_sayur` int(11) DEFAULT NULL,
-  `id_makanan_buah` int(11) DEFAULT NULL,
-  `id_minuman` int(11) DEFAULT NULL,
+  `id_makanan_pokok` varchar(255) DEFAULT NULL,
+  `id_makanan_lauk_pauk` varchar(255) DEFAULT NULL,
+  `id_makanan_sayur` varchar(255) DEFAULT NULL,
+  `id_makanan_buah` varchar(255) DEFAULT NULL,
+  `id_minuman` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for notifikasi
@@ -124,7 +138,7 @@ CREATE TABLE `notifikasi` (
   `notifikasi` varchar(255) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for pegawai
@@ -144,4 +158,4 @@ CREATE TABLE `pegawai` (
   `email` varchar(255) DEFAULT NULL,
   `kode_pendaftaran` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;

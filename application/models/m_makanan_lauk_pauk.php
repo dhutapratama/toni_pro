@@ -25,9 +25,14 @@ class M_makanan_lauk_pauk extends CI_Model{
 		$database = $this->db->select('*')
 					->from('makanan_lauk_pauk')
 					->where('id', $id)
-					->get()->result();
+					->get();
 
-		return $database[0];
+		if ($database->num_rows() > 0) {
+			$database = $database->result();
+			return $database[0];
+		} else {
+			return array();
+		}
 		// Result in Object
 	}
 	

@@ -10,7 +10,9 @@ class Pegawai extends CI_Controller {
 	// Start of index function
 	public function index()
 	{
-		$this->render->view('pegawai/home');
+		$id 							= $this->m_pegawai->get_pegawai_by_username()->id;
+		$data['get_menu']				= $this->m_menu_makanan->get_menu_makanan_by_id_pegawai($id);
+		$this->render->view('pegawai/home', $data);
 	}
 	// End of index function
 

@@ -345,7 +345,7 @@ class Admin extends CI_Controller {
 	{
 		switch ($selector) {
 			case 'insert':
-				$this->_insert_makanan($id);
+				$this->_insert_menu($id);
 				break;
 
 			case 'edit':
@@ -357,9 +357,17 @@ class Admin extends CI_Controller {
 				$data['get_makanan_minuman'] 	= $this->m_makanan_minuman->get_makanan_minumans();
 				$data['get_menu']				= $this->m_menu_makanan->get_menu_makanan_by_id_pegawai($id);
 
+				if ($data['get_pegawai'] == false) {
+					redirect('admin/menu');
+				}
+
 				$this->render->view('admin/menu_pegawai_add', $data);
 				break;
-			
+
+			case 'delete':
+				$this->_delete_menu($id);
+				break;
+
 			default:
 				$data['get_pegawais'] = $this->m_pegawai->get_pegawais();
 				$this->render->view('admin/menu_pegawai', $data);
@@ -367,7 +375,7 @@ class Admin extends CI_Controller {
 		}
 	}
 
-	private function _insert_makanan($id) {
+	private function _insert_menu($id) {
 		$data['id_user'] 			  = $id;
 		$data['id_makanan_pokok'] 	  = $_POST['makanan_pokok'];
 		$data['id_makanan_lauk_pauk'] = $_POST['makanan_lauk_pauk'];
@@ -378,6 +386,12 @@ class Admin extends CI_Controller {
 		$this->m_menu_makanan->insert_menu_makanan($data);
 
 		redirect('admin/menu/edit/'.$id.'/'.md5(time()));
+	}
+
+	private function _delete_menu($id) {
+		$this->m_menu_makanan->delete_menu_makanan($id);
+
+		redirect('admin/menu/edit/');
 	}
 	// End of menu function
 
