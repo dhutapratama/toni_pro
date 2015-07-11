@@ -35,12 +35,21 @@ class Render extends CI_Model{
 					default: 
 						$this->session->sess_destroy();
 						break;
-
 				}
 			}
 		} else {
-			if ($this->uri->segment(1) != '') {
+			switch ($this->uri->segment(1)) {
+				case 'home':
+					
+					break;
+
+				case '':
+				
+					break;
+				
+				default:
 					redirect();
+					break;
 			}
 		}
 	}

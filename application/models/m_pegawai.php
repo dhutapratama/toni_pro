@@ -48,6 +48,17 @@ class M_pegawai extends CI_Model{
 		// $data['username']
 		// $data['password']
 		// $data['email']
+		// $data['kode_pedaftaran']
+
+		$search = 1;
+		while($search > 0) {
+			$data['kode_pendaftaran'] = $this->_kode_pendaftaran();
+
+			$search = $this->db->select('*')
+					->from('pegawai')
+					->where('kode_pendaftaran', $data['kode_pendaftaran'])
+					->get()->num_rows();
+		}
 
 		if (isset($data['password'])) {
 			$data['password'] = md5($data['password']);
@@ -125,6 +136,21 @@ class M_pegawai extends CI_Model{
 
 		return $database[0];
 		// Result in Object
+	}
+
+	// Random kode pendaftaran
+	private function _kode_pendaftaran() {
+		return rand(10000, 99999);
+	}
+
+	// Get pegawai by nomor_pendaftaran
+	public function get_pegawai_by_kode_pendaftaran() {
+		$kode_pendaftaran = $this->input->post('kode_pendaftaran');
+		$database = $this->db->select("*")
+					->from("pegawai")
+					->where('kode_pendaftaran', $kode_pendaftaran)
+					->get()->result();
+		return $database[0];
 	}
 
 }
