@@ -13,6 +13,7 @@
                 <th>NIK</th>
                 <th>NAMA</th>
                 <th>DIVISI</th>
+                <th>KODE PENDAFTARANN</th>
                 <th>OPSI</th>
               </tr>
             </thead>
@@ -23,6 +24,7 @@
                 <td><?php echo $value->nomor_induk; ?></td>
                 <td><?php echo $value->nama; ?></td>
                 <td><?php echo $this->m_divisi->get_divisi_by_id($value->id_divisi)->nama_divisi; ?></td>
+                <td><?php echo $value->kode_pendaftaran; ?></td>
                 <td>
                   <a href="<?php echo site_url('admin/pegawai/edit/'.$value->id); ?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
                   <a href="<?php echo site_url('admin/pegawai/delete/'.$value->id); ?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
