@@ -84,7 +84,7 @@
                     ?>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="makanan_sayur[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>;>
+                      <input type="checkbox" name="makanan_sayur[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
                       <?php echo $value->nama_makanan; ?>
                     </label>
                   </div>
@@ -138,7 +138,7 @@
                     ?>
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" name="makanan_minuman[]" value="<?php echo $value->id; ?>"<?php echo $choosen; ?>>
+                      <input type="checkbox" name="makanan_minuman[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
                       <?php echo $value->nama_makanan; ?>
                     </label>
                   </div>
