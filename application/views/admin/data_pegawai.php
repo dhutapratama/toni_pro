@@ -95,6 +95,6 @@
         </div>
       </div>
     </div>
-    </section><!--/wrapper -->
-    </section><!-- /MAIN CONTENT -->
+  </section><!--/wrapper -->
+</section><!-- /MAIN CONTENT -->
     <!--main content end-->

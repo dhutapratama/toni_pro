@@ -364,6 +364,10 @@ class Admin extends CI_Controller {
 				$this->render->view('admin/menu_pegawai_add', $data);
 				break;
 
+			case 'change':
+				$this->_change_menu($id);
+				break;
+
 			case 'delete':
 				$this->_delete_menu($id);
 				break;
@@ -392,6 +396,25 @@ class Admin extends CI_Controller {
 		$this->m_menu_makanan->delete_menu_makanan($id);
 
 		redirect('admin/menu/edit/');
+	}
+
+	private function _change_menu($id) {
+		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+			$data['id_makanan_pokok'] 	  = $this->input->post('makanan_pokok');
+			$data['id_makanan_lauk_pauk'] = $this->input->post('makanan_lauk_pauk');
+			$data['id_makanan_sayur'] 	  = $this->input->post('makanan_sayur');
+			$data['id_makanan_buah'] 	  = $this->input->post('makanan_buah');
+			$data['id_minuman']		  	  = $this->input->post('makanan_minuman');
+			$this->m_menu_makanan->update_menu_makanan($this->input->post('id'), $data);
+		}
+		$data['get_makanan_pokok']		= $this->m_makanan_pokok->get_makanan_pokoks();
+		$data['get_makanan_lauk_pauk']	= $this->m_makanan_lauk_pauk->get_makanan_lauk_pauks();
+		$data['get_makanan_sayur']	 	= $this->m_makanan_sayur->get_makanan_sayurs();
+		$data['get_makanan_buah']	 	= $this->m_makanan_buah->get_makanan_buahs();
+		$data['get_makanan_minuman'] 	= $this->m_makanan_minuman->get_makanan_minumans();
+		$data['menu_makanan']  			= $this->m_menu_makanan->get_menu_makanan_by_id($id);
+		$this->render->view('admin/menu_pegawai_change', $data);
+
 	}
 	// End of menu function
 

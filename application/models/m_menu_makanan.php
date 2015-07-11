@@ -27,7 +27,7 @@ class M_menu_makanan extends CI_Model{
 					->where('id', $id)
 					->get()->result();
 
-		return $database;
+		return $database[0];
 		// Result in Object
 	}
 	
@@ -61,7 +61,6 @@ class M_menu_makanan extends CI_Model{
 		// $data['id_makanan_buah'] array('id_1', id_2)
 		// $data['id_minuman'] array('id_1', id_2)
 
-		$data['id_user']			  = serialize($data['id_user']);
 		$data['id_makanan_pokok']     = serialize($data['id_makanan_pokok']);
 		$data['id_makanan_lauk_pauk'] = serialize($data['id_makanan_lauk_pauk']);
 		$data['id_makanan_sayur']     = serialize($data['id_makanan_sayur']);

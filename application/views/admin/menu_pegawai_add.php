@@ -28,7 +28,7 @@
               <div class="col-lg-4 col-md-4 col-sm-4 mb">
                 <div class="steps pn">
                   <input type='submit' value='Menu <?php echo $counter_menu; ?>' id='submit' />
-                  <p align="center"><a href="<?php echo site_url('admin/menu/edit/'.$value->id); ?>">UBAH</a> | <a href="<?php echo site_url('admin/menu/delete/'.$value->id); ?>">HAPUS</a></p>
+                  <p align="center"><a href="<?php echo site_url('admin/menu/change/'.$value->id); ?>">UBAH</a> | <a href="<?php echo site_url('admin/menu/delete/'.$value->id); ?>">HAPUS</a></p>
 <?php foreach ($makanan_pokok as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
                   <label for='op1'><?php echo $this->m_makanan_pokok->get_makanan_pokok_by_id($value)->nama_makanan;?></label>
