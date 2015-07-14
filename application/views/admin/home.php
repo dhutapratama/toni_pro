@@ -23,7 +23,17 @@
                </p>
              </div>
            </div>
-           <?php } ?>
+           <?php }
+           if($get_notifikasis == array()) { ?>
+            <div class="desc">
+              <div class="thumb">
+                <span class="badge bg-theme"><i class="fa fa-minus"></i></span>
+              </div>
+            <div class="details">
+              <p>Tidak ada notifikasi!</p>
+            </div>
+          <?php }
+           ?>
          </div>
        </div>
       
