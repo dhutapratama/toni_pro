@@ -49,7 +49,7 @@
         <div id="sidebar"  class="nav-collapse ">
           <!-- sidebar menu start-->
           <ul class="sidebar-menu" id="nav-accordion">
-           <h5 class="centered">Nama Pegawai</h5>
+           <h5 class="centered"><?php echo $this->session->userdata('username'); ?></h5>
 
             <li class="mt">
               <a href="<?php echo site_url('admin'); ?>" >

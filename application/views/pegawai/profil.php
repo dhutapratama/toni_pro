@@ -73,45 +73,45 @@
               <form class="form-horizontal style-form" method="post" action="<?php echo site_url('pegawai/profil/update');?>">
 
                 <div class="form-group">
-                  <label class="col-sm-3 col-sm-3 control-label">BERAT BADAN</label>
+                  <label class="col-sm-3 col-sm-3 control-label">BERAT BADAN (KG)</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="berat_badan" value="<?php echo $get_pegawai->berat_badan; ?>">
+                    <input type="number" class="form-control" name="berat_badan" value="<?php echo $get_pegawai->berat_badan; ?>" min="50" max="200">
                     <input type="hidden" name="id" value="<?php echo $get_pegawai->id; ?>">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-3 col-sm-3 control-label">TINGGI BADAN</label>
+                  <label class="col-sm-3 col-sm-3 control-label">TINGGI BADAN (CM)</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="tinggi_badan" value="<?php echo $get_pegawai->tinggi_badan; ?>">
+                    <input type="number" class="form-control" name="tinggi_badan" value="<?php echo $get_pegawai->tinggi_badan; ?>" min="140" max="200">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label class="col-sm-3 col-sm-3 control-label">UMUR</label>
+                  <label class="col-sm-3 col-sm-3 control-label">UMUR (Tahun)</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="umur" value="<?php echo $get_pegawai->umur; ?>">
+                    <input type="number" class="form-control" name="umur" value="<?php echo $get_pegawai->umur; ?>" min="20" max="70">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-sm-3 col-sm-3 control-label">USERNAME</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="username" value="<?php echo $get_pegawai->username; ?>">
+                    <input type="text" class="form-control" name="username" value="<?php echo $get_pegawai->username; ?>" min="3" pattern="[a-zA-Z0-9]+">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-sm-3 col-sm-3 control-label">PASSWORD</label>
                   <div class="col-sm-9">
-                    <input type="password" class="form-control" name="password">
+                    <input type="password" class="form-control" name="password" min="6" pattern="[a-zA-Z0-9]+">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label class="col-sm-3 col-sm-3 control-label">EMAIL</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="email" value="<?php echo $get_pegawai->email; ?>">
+                    <input type="email" class="form-control" name="email" value="<?php echo $get_pegawai->email; ?>">
                   </div>
                 </div>
 
