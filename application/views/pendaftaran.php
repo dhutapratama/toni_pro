@@ -44,9 +44,9 @@
 		        	<br>
 		        	<label>FORM PENDAFTARAN</label>
 		        	<input type="hidden" name="id" value="<?php echo $get_pegawai->id; ?>">
-		        	<input type="text" class="form-control" placeholder="Email" autofocus name="email">
+		        	<input type="email" class="form-control" placeholder="Email" autofocus name="email">
 		            <br>
-		            <input type="text" class="form-control" placeholder="User ID" name="username">
+		            <input type="text" class="form-control" placeholder="User ID / Username" name="username">
 		            <br>
 		            <input type="password" class="form-control" placeholder="Password" name="password">
 		            <br>

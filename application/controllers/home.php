@@ -16,14 +16,37 @@ class Home extends CI_Controller {
 			$this->m_administrator->login($data['username'], $data['password']);
 			$this->m_pegawai->login($data['username'], $data['password']);
 
+			if ($this->session->userdata('username') == '') {
+				$this->session->set_flashdata('notifikasi', 'Username / Password anda salah!');
+				$this->session->set_flashdata('alert_type', 'danger');
+			}
 			redirect('');
 		}
-		$this->load->view('login');
+
+		$data = array();
+		if ($this->session->flashdata('notifikasi') != '') {
+			$data['notifikasi'] = $this->session->flashdata('notifikasi');
+			$data['alert_type'] = $this->session->flashdata('alert_type');;
+		}
+		$this->load->view('login', $data);
 	}
 
 	public function pendaftaran() {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			if($this->input->post('kode_pendaftaran') == '') {
+
+				$this->load->library('form_validation');
+				$this->form_validation->set_rules('username', 'Username', 'required|min_length[4]|is_unique[pegawai.username]');
+				$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]');
+				$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pegawai.email]');
+				if ($this->form_validation->run() == FALSE) {
+					$this->form_validation->set_error_delimiters('- ', '<br>');
+					$this->session->set_flashdata('notifikasi', validation_errors() . 'Ulangi prosedur input kode pendaftaran.');
+					$this->session->set_flashdata('alert_type', 'danger');
+					redirect();
+					exit;
+      			}
+
 				$id 			  		  = $this->input->post('id');
 				$data['username'] 		  = $this->input->post('username');
 				$data['password'] 		  = $this->input->post('password');
@@ -32,10 +55,20 @@ class Home extends CI_Controller {
 
 				$this->m_pegawai->update_pegawai($id, $data);
 
+				$this->session->set_flashdata('notifikasi', 'Pendaftaran user portal berhasil!');
+				$this->session->set_flashdata('alert_type', 'success');
+
 				redirect();
 			} else {
 				$data['get_pegawai'] = $this->m_pegawai->get_pegawai_by_kode_pendaftaran();
-				$this->load->view('pendaftaran', $data);
+
+				if ($data['get_pegawai'] == '') {
+					$this->session->set_flashdata('notifikasi', 'Kode Pendaftaran tidak di temukan!');
+					$this->session->set_flashdata('alert_type', 'danger');
+					redirect();
+				} else {
+					$this->load->view('pendaftaran', $data);
+				}
 			}
 		} else {
 			redirect();
