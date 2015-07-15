@@ -28,16 +28,16 @@
   <body>
 
   	<div id="login-page">
+      <div class="container">
+        <div class="alert alert-danger">
+          <?php echo $notifikasi; ?>
+        </div>
+      </div>
   		<div class="container">
+
   			<form class="form-login" action="<?php echo base_url(); ?>" method="post">
   				<h2 class="form-login-heading">PORTAL</h2>
-
   				<div class="login-wrap">
-            <?php if (isset($notifikasi)) { ?>
-              <div class="alert alert-<?php echo $alert_type; ?>">
-                <?php echo $notifikasi; ?>
-              </div>
-            <?php } ?>
   					<input type="text" class="form-control" placeholder="User ID" autofocus name="username">
   					<br>
   					<input type="password" class="form-control" placeholder="Password" name="password">
@@ -50,9 +50,10 @@
   							<a data-toggle="modal" href="login.html#lupaPassword"> Lupa Password?</a>
   						</span>
   					</label>
-  					<button class="btn btn-theme btn-block" type="submit"><i class="fa fa-lock"></i> Masuk</button>
+  					<button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> Masuk</button>
   				</div>
   			</form>
+
 
   			<!-- Modal -->
   			<form class="form-login" action="<?php echo site_url('home/reset_password'); ?>" method="post">
@@ -113,7 +114,7 @@
 
   	<!--BACKSTRETCH-->
   	<!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
-  	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery.backstretch.min.js"></script>
+  	<script type="text/javascript" src="assets/js/jquery.backstretch.min.js"></script>
   	<script>
   	$.backstretch("<?php echo base_url(); ?>assets/img/login-bg.jpg", {speed: 500});
   	</script>

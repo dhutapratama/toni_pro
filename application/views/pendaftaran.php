@@ -50,7 +50,7 @@
 		            <br>
 		            <input type="password" class="form-control" placeholder="Password" name="password">
 		            <br>
-		            <button class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> Masuk</button>
+		            <button class="btn btn-theme btn-block" href="index.html" type="submit">DAFTARKAN</button>
 		        </div>
 		      </form>	  	
 	  	

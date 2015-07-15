@@ -69,4 +69,5 @@ class Pegawai extends CI_Controller {
 		redirect('pegawai/kalori/'.md5(time()));
 	}
 	// End of profil function
+	
 }

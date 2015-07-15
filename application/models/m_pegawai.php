@@ -181,8 +181,70 @@ class M_pegawai extends CI_Model{
 				break;
 		}
 		
-
 		return $database;
+	}
+
+	public function reset_password($data = array()) {
+		if ($data['email'] != '') {
+			$database = $this->db->select('*')
+						->from('pegawai')
+						->where('email', $data['email'])
+						->get()->num_rows();
+
+			if($database > 0) {
+				$meta['reset_url'] = md5(time());
+				$data['pesan'] = 'Link Ganti Password : <a href="'.site_url('home/reset_password/'.$meta['reset_url']).'">'.site_url('home/reset_password/'.$meta['reset_url']).'</a>';
+				$this->_send_email($data);
+
+				$this->db->where('email', $data['email']);
+				$this->db->update('pegawai', $meta);
+
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	private function _send_email($data = array()) {
+		$this->load->library('email');
+		$this->load->config('smtp');
+
+        $config['protocol']    = 'smtp';
+        $config['smtp_host']    = $this->config->item('hostname');
+        $config['smtp_port']    = $this->config->item('port_num');
+        $config['smtp_timeout'] = '7';
+        $config['smtp_user']    = $this->config->item('username'); // Alamat Email
+        $config['smtp_pass']    = $this->config->item('password'); // Password Email
+        $config['charset']    = 'utf-8';
+        $config['newline']    = "\r\n";
+        $config['mailtype'] = 'html'; // or html
+        $config['validation'] = TRUE; // bool whether to validate email or not 
+        
+        $this->email->initialize($config);
+        $this->email->from($this->config->item('username'), $this->config->item('fromname'));
+        $this->email->to($data['email']);
+
+        $this->email->subject($this->config->item('subject'));
+        $this->email->message($data['pesan']);
+
+        $this->email->send();
+	}
+
+	public function check_reset_url($reset_url = '') {
+		$database = $this->db->select('*')
+					->from('pegawai')
+					->where('reset_url', $reset_url)
+					->get();
+
+		if ($database->num_rows() > 0) {
+			$database = $database->result();
+			return $database[0];
+		} else {
+			return false;
+		}
 	}
 
 }
