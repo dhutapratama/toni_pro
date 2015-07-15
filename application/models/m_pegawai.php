@@ -153,4 +153,36 @@ class M_pegawai extends CI_Model{
 		return $database[0];
 	}
 
+	public function reset_password_pegawai($id = 0)
+	{
+		switch ($id) {
+			case 'all':
+				$database = $this->db->get('pegawai')->result();
+
+				foreach ($database as $key => $value) {
+					if($value->kode_pendaftaran != 'active') {
+						$data['kode_pendaftaran'] = $this->_kode_pendaftaran();
+						$this->db->where('id', $value->id);
+						$this->db->update('pegawai', $data);
+					}
+				}
+
+				break;
+			
+			default:
+				$data['kode_pendaftaran'] = $this->_kode_pendaftaran();
+
+				if ($id != 0) {
+					$this->db->where("id", $id);
+					$database = $this->db->update("pegawai", $data);
+				} else {
+					$database = false;
+				}
+				break;
+		}
+		
+
+		return $database;
+	}
+
 }

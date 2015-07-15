@@ -301,6 +301,10 @@ class Admin extends CI_Controller {
 			case 'delete':
 				$this->_delete_pegawai($id);
 				break;
+
+			case 'reset':
+				$this->_reset_pegawai($id);
+				break;
 			
 			default:
 				$data['get_pegawais'] = $this->m_pegawai->get_pegawais();
@@ -335,6 +339,12 @@ class Admin extends CI_Controller {
 		$data['id_divisi']     = $this->input->post('divisi');
 		
 		$this->m_pegawai->update_pegawai($id, $data);
+
+		redirect('admin/pegawai/'.md5(time()));
+	}
+
+	private function _reset_pegawai($id) {
+		$this->m_pegawai->reset_password_pegawai($id);
 
 		redirect('admin/pegawai/'.md5(time()));
 	}

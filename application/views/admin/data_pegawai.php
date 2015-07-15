@@ -13,7 +13,7 @@
                 <th>NIK</th>
                 <th>NAMA</th>
                 <th>DIVISI</th>
-                <th>KODE PENDAFTARANN</th>
+                <th>KODE PENDAFTARAN <a href="<?php echo site_url('admin/pegawai/reset/all'); ?>" class="btn btn-danger btn-xs fa fa-key"> Reset All</a></th>
                 <th>OPSI</th>
               </tr>
             </thead>
@@ -28,6 +28,7 @@
                 <td>
                   <a href="<?php echo site_url('admin/pegawai/edit/'.$value->id); ?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
                   <a href="<?php echo site_url('admin/pegawai/delete/'.$value->id); ?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
+                  <a href="<?php echo site_url('admin/pegawai/reset/'.$value->id); ?>" class="btn btn-danger btn-xs fa fa-key"> Reset Password</a>
                 </td>
               </tr>
               <?php } ?>
