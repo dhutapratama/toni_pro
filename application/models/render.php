@@ -9,6 +9,10 @@ class Render extends CI_Model{
 		$username 	= $this->session->userdata('username');
 		$role 		= $this->session->userdata('role');
 
+		if ($role == 'kantin') {
+			$role = 'admin';
+		}
+
 		if($this->uri->segment(1) == 'logout') {
 			$this->session->sess_destroy();
 			redirect();
@@ -55,7 +59,7 @@ class Render extends CI_Model{
 	}
 
 	public function view($name = 'error', $data = array()) {
-		$this->load->view('static/header_'.$this->uri->segment(1), $data);
+		$this->load->view('static/header_'.$this->session->userdata('role'), $data);
 		$this->load->view($name);
 		$this->load->view('static/footer');
 	}
