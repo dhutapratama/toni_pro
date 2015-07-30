@@ -42,6 +42,54 @@ class Pegawai extends CI_Controller {
 		
 		$this->m_pegawai->update_pegawai($id, $data);
 
+		$pegawai = $this->m_pegawai->get_pegawai_by_username();
+
+		if ($pegawai->jenis_kelamin == 'l') {
+			if ($data['umur'] > 18 && $data['umur'] < 30) {
+				$gizi_berat_badan = 56;
+				$gizi_kalori = 2550;
+			} elseif ($data['umur'] > 29 && $data['umur'] < 50) {
+				$gizi_berat_badan = 62;
+				$gizi_kalori = 2350;
+			} else {
+				$gizi_berat_badan = 62;
+				$gizi_kalori = 2250;
+			}
+		} else {
+			if ($data['umur'] > 18 && $data['umur'] < 30) {
+				$gizi_berat_badan = 52;
+				$gizi_kalori = 1900;
+			} elseif ($data['umur'] > 29 && $data['umur'] < 50) {
+				$gizi_berat_badan = 55;
+				$gizi_kalori = 1800;
+			} else {
+				$gizi_berat_badan = 55;
+				$gizi_kalori = 1750;
+			}
+		}
+
+		if ($data['umur'] > 19 && $data['umur'] < 31) {
+			$presentase = 100/100;
+		} elseif ($data['umur'] > 30 && $data['umur'] < 41) {
+			$presentase = 97/100;
+		} elseif ($data['umur'] > 40 && $data['umur'] < 51) {
+			$presentase = 94/100;
+		} elseif ($data['umur'] > 50 && $data['umur'] < 61) {
+			$presentase = 86.5/100;
+		} elseif ($data['umur'] > 60 && $data['umur'] < 71) {
+			$presentase = 79/100;
+		} else {
+			$presentase = 69/100;
+		}
+
+		$kalori_per_hari = ($data['berat_badan'] / $gizi_berat_badan) * $gizi_kalori;
+		$penyesuaian_usia = $presentase * $kalori_per_hari;
+		$kalori_ditempat_kerja = 40 / 100 * $penyesuaian_usia;
+		$kalori_ditempat_kerja = round( $kalori_ditempat_kerja, 2, PHP_ROUND_HALF_UP);
+		$kalori['kalori'] = $kalori_ditempat_kerja;
+		
+		$this->m_kalori->update_kalori($kalori);
+
 		redirect('pegawai/profil/'.md5(time()));
 	}
 	// End of profil function

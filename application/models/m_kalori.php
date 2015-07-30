@@ -111,6 +111,7 @@ class M_kalori extends CI_Model{
 		} else {
 
 			unset($database);
+			$database[0] = (object) '';
 			$database[0]->kalori = 0;
 			return $database[0];
 		}

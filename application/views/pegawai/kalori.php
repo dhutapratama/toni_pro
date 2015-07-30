@@ -9,7 +9,7 @@
               <div class="weather-3 pn centered">
                 <i class="fa fa-sun-o"></i>
                 <h1><?php echo $get_kalori->kalori; ?> KALORI</h1>
-                <div class="row">
+                <div class="row" style="display:none;">
                   <h3 class="centered"><a data-toggle="modal" href="pegawai_profil.html#ubahData" class="btn btn-theme03"> UBAH</a></h3>
 
                 </div>
