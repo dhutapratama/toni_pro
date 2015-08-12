@@ -16,6 +16,26 @@
                 <input type="hidden" class="form-control" name="id" value="<?php echo $get_divisi->id; ?>">
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">KATEGORI PEKERJAAN</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="id_kategori_pekerjaan">
+                  <?php foreach ($get_kategori_pekerjaans as $key => $value) {
+                    echo '<option value="'.$value->id.'">'.$value->nama_kategori_pekerjaan.'</option>';
+                  } ?>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">POSISI BADAN</label>
+              <div class="col-sm-10">
+                <select class="form-control" name="id_posisi_badan">
+                  <?php foreach ($get_posisi_badans as $key => $value) {
+                    echo '<option value="'.$value->id.'">'.$value->nama_posisi_badan.'</option>';
+                  } ?>
+                </select>
+              </div>
+            </div>
             <button type="submit" class="btn btn-theme">Simpan</button>
           </form>
         </div>

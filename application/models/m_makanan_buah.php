@@ -35,6 +35,7 @@ class M_makanan_buah extends CI_Model{
 	public function insert_makanan_buah($data = array())
 	{
 		// $data['nama_makanan']
+		// $data['kalori']
 		$database = $this->db->insert('makanan_buah', $data);
 		return $database;
 	}
@@ -43,6 +44,7 @@ class M_makanan_buah extends CI_Model{
 	public function update_makanan_buah($id = 0, $data = array())
 	{
 		// $data['nama_makanan']
+		// $data['kalori']
 		if ($id != 0) {
 			$database = $this->db->where('id', $id)
 						->update('makanan_buah', $data);

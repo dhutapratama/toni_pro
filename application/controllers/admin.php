@@ -61,6 +61,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_pokok() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		$this->m_makanan_pokok->insert_makanan_pokok($data);
 		redirect('admin/makanan/pokok/'.md5(time()));
 	}
@@ -74,6 +75,7 @@ class Admin extends CI_Controller {
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$id 				  = $this->input->post('id');
 			$data['nama_makanan'] = $this->input->post('nama_makanan');
+			$data['kalori']		  = $this->input->post('kalori');
 
 			$this->m_makanan_pokok->update_makanan_pokok($id, $data);
 		}
@@ -110,6 +112,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_lauk_pauk() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_lauk_pauk->insert_makanan_lauk_pauk($data);
 
@@ -125,6 +128,7 @@ class Admin extends CI_Controller {
 	private function _update_makanan_lauk_pauk() {
 		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_lauk_pauk->update_makanan_lauk_pauk($id, $data);
 
@@ -161,6 +165,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_sayur() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		$this->m_makanan_sayur->insert_makanan_sayur($data);
 		redirect('admin/makanan/sayur/'.md5(time()));
 	}
@@ -173,6 +178,7 @@ class Admin extends CI_Controller {
 	private function _update_makanan_sayur() {
 		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		$this->m_makanan_sayur->update_makanan_sayur($id, $data);
 		redirect('admin/makanan/sayur/'.md5(time()));
 	}
@@ -207,6 +213,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_buah() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_buah->insert_makanan_buah($data);
 
@@ -222,6 +229,7 @@ class Admin extends CI_Controller {
 	private function _update_makanan_buah() {
 		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_buah->update_makanan_buah($id, $data);
 
@@ -258,6 +266,7 @@ class Admin extends CI_Controller {
 
 	private function _insert_makanan_minuman() {
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_minuman->insert_makanan_minuman($data);
 
@@ -273,6 +282,7 @@ class Admin extends CI_Controller {
 	private function _update_makanan_minuman() {
 		$id 				  = $this->input->post('id');
 		$data['nama_makanan'] = $this->input->post('nama_makanan');
+		$data['kalori']		  = $this->input->post('kalori');
 		
 		$this->m_makanan_minuman->update_makanan_minuman($id, $data);
 
@@ -498,6 +508,8 @@ class Admin extends CI_Controller {
 
 			case 'edit':
 				$data['get_divisi'] = $this->m_divisi->get_divisi_by_id($id);
+				$data['get_kategori_pekerjaans'] = $this->m_kategori_pekerjaan->get_kategori_pekerjaans();
+				$data['get_posisi_badans'] = $this->m_posisi_badan->get_posisi_badans();
 				$this->render->view('admin/data_divisi_edit', $data);
 				break;
 
@@ -511,13 +523,18 @@ class Admin extends CI_Controller {
 
 			default:
 				$data['get_divisis'] = $this->m_divisi->get_divisis();
+				$data['get_kategori_pekerjaans'] = $this->m_kategori_pekerjaan->get_kategori_pekerjaans();
+				$data['get_posisi_badans'] = $this->m_posisi_badan->get_posisi_badans();
+
 				$this->render->view('admin/data_divisi', $data);
 				break;
 		}
 	}
 
 	private function _insert_divisi() {
-		$data['nama_divisi'] = $this->input->post('nama_divisi');
+		$data['nama_divisi'] 			= $this->input->post('nama_divisi');
+		$data['id_kategori_pekerjaan'] 	= $this->input->post('id_kategori_pekerjaan');
+		$data['id_posisi_badan'] 		= $this->input->post('id_posisi_badan');
 		
 		$this->m_divisi->insert_divisi($data);
 
@@ -531,8 +548,10 @@ class Admin extends CI_Controller {
 	}
 
 	private function _update_divisi() {
-		$id 				 = $this->input->post('id');
-		$data['nama_divisi'] = $this->input->post('nama_divisi');
+		$id 				 			= $this->input->post('id');
+		$data['nama_divisi'] 			= $this->input->post('nama_divisi');
+		$data['id_kategori_pekerjaan']	= $this->input->post('id_kategori_pekerjaan');
+		$data['id_posisi_badan'] 		= $this->input->post('id_posisi_badan');
 		
 		$this->m_divisi->update_divisi($id, $data);
 

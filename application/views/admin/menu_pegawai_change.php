@@ -31,7 +31,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="makanan_pokok[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
-                      <?php echo $value->nama_makanan; ?>
+                      <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                     </label>
                   </div>
                   <?php } ?>
@@ -58,7 +58,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="makanan_lauk_pauk[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
-                      <?php echo $value->nama_makanan; ?>
+                      <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                     </label>
                   </div>
                   <?php } ?>
@@ -85,7 +85,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="makanan_sayur[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
-                      <?php echo $value->nama_makanan; ?>
+                      <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                     </label>
                   </div>
                   <?php } ?>
@@ -112,7 +112,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="makanan_buah[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
-                      <?php echo $value->nama_makanan; ?>
+                      <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                     </label>
                   </div>
                   <?php } ?>
@@ -139,7 +139,7 @@
                   <div class="checkbox">
                     <label>
                       <input type="checkbox" name="makanan_minuman[]" value="<?php echo $value->id; ?>"<?php echo $checked; ?>>
-                      <?php echo $value->nama_makanan; ?>
+                      <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                     </label>
                   </div>
                   <?php } ?>

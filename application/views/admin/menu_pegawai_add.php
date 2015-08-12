@@ -31,23 +31,23 @@
                   <p align="center"><a href="<?php echo site_url('admin/menu/change/'.$value->id); ?>">UBAH</a> | <a href="<?php echo site_url('admin/menu/delete/'.$value->id); ?>">HAPUS</a></p>
 <?php foreach ($makanan_pokok as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
-                  <label for='op1'><?php echo $this->m_makanan_pokok->get_makanan_pokok_by_id($value)->nama_makanan;?></label>
+                  <label for='op1'><?php echo $this->m_makanan_pokok->get_makanan_pokok_by_id($value)->nama_makanan.' : '.$this->m_makanan_pokok->get_makanan_pokok_by_id($value)->kalori.' Kalori';?></label>
 <?php }
                   foreach ($makanan_lauk_pauk as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
-                  <label for='op1'><?php echo $this->m_makanan_lauk_pauk->get_makanan_lauk_pauk_by_id($value)->nama_makanan;?></label>
+                  <label for='op1'><?php echo $this->m_makanan_lauk_pauk->get_makanan_lauk_pauk_by_id($value)->nama_makanan.' : '.$this->m_makanan_lauk_pauk->get_makanan_lauk_pauk_by_id($value)->kalori.' Kalori';?></label>
 <?php }
                   foreach ($makanan_sayur as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
-                  <label for='op1'><?php echo $this->m_makanan_sayur->get_makanan_sayur_by_id($value)->nama_makanan;?></label>
+                  <label for='op1'><?php echo $this->m_makanan_sayur->get_makanan_sayur_by_id($value)->nama_makanan.' : '.$this->m_makanan_sayur->get_makanan_sayur_by_id($value)->kalori.' Kalori';?></label>
 <?php } 
                   foreach ($makanan_buah as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
-                  <label for='op1'><?php echo $this->m_makanan_buah->get_makanan_buah_by_id($value)->nama_makanan;?></label>
+                  <label for='op1'><?php echo $this->m_makanan_buah->get_makanan_buah_by_id($value)->nama_makanan.' : '.$this->m_makanan_buah->get_makanan_buah_by_id($value)->kalori.' Kalori';?></label>
 <?php } 
                   foreach ($makanan_minuman as $key => $value) { ?>
                   <input id='op1' name='op1' type='checkbox' checked disabled />
-                  <label for='op1'><?php echo $this->m_makanan_minuman->get_makanan_minuman_by_id($value)->nama_makanan;?></label>
+                  <label for='op1'><?php echo $this->m_makanan_minuman->get_makanan_minuman_by_id($value)->nama_makanan.' : '.$this->m_makanan_minuman->get_makanan_minuman_by_id($value)->kalori.' Kalori';?></label>
                   <?php } ?>
                 </div>
               </div>
@@ -92,7 +92,7 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" name="makanan_pokok[]" value="<?php echo $value->id; ?>">
-                              <?php echo $value->nama_makanan; ?>
+                              <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                             </label>
                           </div>
                           <?php } ?>
@@ -106,7 +106,7 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" name="makanan_lauk_pauk[]" value="<?php echo $value->id; ?>">
-                              <?php echo $value->nama_makanan; ?>
+                              <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                             </label>
                           </div>
                           <?php } ?>
@@ -120,7 +120,7 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" name="makanan_sayur[]" value="<?php echo $value->id; ?>">
-                              <?php echo $value->nama_makanan; ?>
+                              <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                             </label>
                           </div>
                           <?php } ?>
@@ -134,7 +134,7 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" name="makanan_buah[]" value="<?php echo $value->id; ?>">
-                              <?php echo $value->nama_makanan; ?>
+                              <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                             </label>
                           </div>
                           <?php } ?>
@@ -148,7 +148,7 @@
                           <div class="checkbox">
                             <label>
                               <input type="checkbox" name="makanan_minuman[]" value="<?php echo $value->id; ?>">
-                              <?php echo $value->nama_makanan; ?>
+                              <?php echo $value->nama_makanan.' : '.$value->kalori.' Kalori'; ?>
                             </label>
                           </div>
                           <?php } ?>

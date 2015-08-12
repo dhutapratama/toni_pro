@@ -13,6 +13,7 @@
                   <tr>
                     <th>ID</th>
                     <th>NAMA MAKANAN LAUK PAUK</th>
+                    <th>JUMLAH KALORI</th>
                     <th>OPSI</th>
                   </tr>
                 </thead>
@@ -22,6 +23,7 @@
                   <tr>
                     <td><?php echo $value->id; ?></td>
                     <td><?php echo $value->nama_makanan; ?></td>
+                    <td><?php echo $value->kalori; ?></td>
                     <td>
                       <a href="<?php echo site_url('admin/makanan/lauk_pauk/edit/'.$value->id);?>" class="btn btn-primary btn-xs fa fa-pencil"></a>
                       <a href="<?php echo site_url('admin/makanan/lauk_pauk/delete/'.$value->id);?>" class="btn btn-danger btn-xs fa fa-trash-o"></a>
@@ -46,6 +48,13 @@
                           <label class="col-sm-3 col-sm-3 control-label">NAMA LAUK PAUK</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" name="nama_makanan">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-sm-3 col-sm-3 control-label">JUMLAH KALORI</label>
+                          <div class="col-sm-9">
+                            <input type="text" class="form-control" name="kalori">
                           </div>
                         </div>
 

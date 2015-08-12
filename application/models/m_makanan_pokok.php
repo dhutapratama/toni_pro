@@ -40,6 +40,7 @@ class M_makanan_pokok extends CI_Model{
 	public function insert_makanan_pokok($data = array())
 	{
 		// $data['nama_makanan']
+		// $data['kalori']
 		$database = $this->db->insert('makanan_pokok', $data);
 		return $database;
 	}
@@ -48,6 +49,7 @@ class M_makanan_pokok extends CI_Model{
 	public function update_makanan_pokok($id = 0, $data = array())
 	{
 		// $data['nama_makanan']
+		// $data['kalori']
 		if ($id != 0) {
 			$database = $this->db->where('id', $id)
 						->update('makanan_pokok', $data);

@@ -16,6 +16,12 @@
                 <input type="hidden" class="form-control" name="id" value="<?php echo $get_makanan_minuman->id; ?>">
               </div>
             </div>
+            <div class="form-group">
+              <label class="col-sm-2 col-sm-2 control-label">JUMLAH KALORI</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" name="kalori" value="<?php echo $get_makanan_minuman->kalori; ?>">
+              </div>
+            </div>
             <button type="submit" class="btn btn-theme">Simpan</button>
           </form>
         </div>

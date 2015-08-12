@@ -17,6 +17,8 @@ $autoload['model']     = array(
 							'm_menu_makanan',
 							'm_notifikasi',
 							'm_pegawai',
+							'm_kategori_pekerjaan',
+							'm_posisi_badan',
 							'render'
 							);
 
